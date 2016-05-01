@@ -1,4 +1,4 @@
-# comerc:tempate-controller-model-map
+# comerc:template-controller-model-map
 
 Get Valid Data for Model by TemplateController!
 

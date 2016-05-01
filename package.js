@@ -1,8 +1,8 @@
 Package.describe({
-  name: 'comerc:tempate-controller-model-map',
-  version: '1.0.0',
+  name: 'comerc:template-controller-model-map',
+  version: '1.0.1',
   summary: 'Get Valid Data for Model by TemplateController!',
-  git: 'https://github.com/comerc/meteor-tempate-controller-model-map',
+  git: 'https://github.com/comerc/meteor-template-controller-model-map',
   documentation: 'README.md'
 });
 
@@ -12,6 +12,6 @@ Package.onUse(function (api) {
   api.use([
     'coffeescript'
   ]);
-  api.addFiles('tempate-controller-model-map.coffee', 'client');
+  api.addFiles('template-controller-model-map.coffee', 'client');
   api.export('TemplateControllerModelMap');
 });
