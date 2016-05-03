@@ -28,6 +28,7 @@ TemplateControllerModelMap.getValidData = (collectionName) ->
 
 TemplateControllerModelMap.init = (@validationContext, @modelMap) ->
   # init state
+  # TODO init with default values from ss
   for variable of @modelMap
     @state.addProperty variable, ''
   @state.addProperty 'errorMessages', []
