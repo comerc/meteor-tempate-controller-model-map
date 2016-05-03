@@ -6,9 +6,9 @@ TemplateControllerModelMap.validateOne = (variable, value) ->
   doc[fieldName] = value
   result = @validationContext.validateOne(doc, fieldName)
   if result
-    @state.errorMessages []
+    @state.errorMessages = []
   else
-    @state.errorMessages _.map @validationContext.getErrorObject().invalidKeys,
+    @state.errorMessages = _.map @validationContext.getErrorObject().invalidKeys,
       TemplateControllerModelMap.getErrorMessage, @
   return result
 
@@ -19,9 +19,9 @@ TemplateControllerModelMap.getValidData = (collectionName) ->
   # TODO collectionName
   data = {}
   for variable, fieldName of @modelMap
-    data[fieldName] = @state[variable]()
+    data[fieldName] = @state[variable]
   if not @validationContext.validate(data)
-    @state.errorMessages _.map @validationContext.getErrorObject().invalidKeys,
+    @state.errorMessages = _.map @validationContext.getErrorObject().invalidKeys,
       TemplateControllerModelMap.getErrorMessage, @
     return false
   return data
@@ -29,14 +29,5 @@ TemplateControllerModelMap.getValidData = (collectionName) ->
 TemplateControllerModelMap.init = (@validationContext, @modelMap) ->
   # init state
   for variable of @modelMap
-    @state[variable] = generateReactiveAccessor('')
-  @state.errorMessages = generateReactiveAccessor([])
-
-generateReactiveAccessor = (defaultValue) ->
-  value = new ReactiveVar(defaultValue)
-  (newValue) ->
-    if newValue != undefined
-      value.set newValue
-    else
-      return value.get()
-    return
+    @state.addProperty variable, ''
+  @state.addProperty 'errorMessages', []

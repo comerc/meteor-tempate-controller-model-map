@@ -1,6 +1,6 @@
 Package.describe({
   name: 'comerc:template-controller-model-map',
-  version: '1.0.1',
+  version: '1.0.2',
   summary: 'Get Valid Data for Model by TemplateController!',
   git: 'https://github.com/comerc/meteor-template-controller-model-map',
   documentation: 'README.md'
