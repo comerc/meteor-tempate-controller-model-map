@@ -20,7 +20,9 @@ TemplateControllerModelMap.getValidData = (collectionName) ->
   data = {}
   for variable, fieldName of @modelMap
     data[fieldName] = @state[variable]
-  if not @validationContext.validate(data)
+  if @validationContext.validate(data)
+    @state.errorMessages = []
+  else
     @state.errorMessages = _.map @validationContext.getErrorObject().invalidKeys,
       TemplateControllerModelMap.getErrorMessage, @
     return false
